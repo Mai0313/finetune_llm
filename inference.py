@@ -3,7 +3,7 @@ from transformers import LlamaTokenizer, LlamaForCausalLM, BitsAndBytesConfig
 
 console = Console()
 
-model_id = "path/to/llama-3.2-1b"
+model_id = "meta-llama/Llama-3.2-1B"
 
 bnb_config = BitsAndBytesConfig(load_in_4bit=True, bnb_4bit_compute_dtype="float16")
 tokenizer = LlamaTokenizer.from_pretrained(model_id)

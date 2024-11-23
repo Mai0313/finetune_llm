@@ -74,6 +74,8 @@ dependencies = [
     "datasets<=3.1.0",
     "accelerate>=1.1.1",
     "huggingface-hub>=0.26.2",
+    "llama-stack>=0.0.54",
+    "pydantic-settings>=2.6.1",
 ]
 readme = "README.md"
 requires-python = ">= 3.10, < 3.11"
