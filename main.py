@@ -17,7 +17,7 @@ tokenizer = LlamaTokenizer.from_pretrained(model_id)
 model = LlamaForCausalLM.from_pretrained(model_id, quantization_config=bnb_config)
 
 
-def preprocess_function(examples):
+def preprocess_function(examples: list[dict[str, str]]) -> dict[str, list]:
     inputs = ["[INST] " + ex["instruction"] + " [SEP] " + ex["input"] for ex in examples]
     outputs = [ex["output"] for ex in examples]
     return tokenizer(inputs, text_target=outputs, max_length=512, truncation=True)
