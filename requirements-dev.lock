@@ -427,12 +427,12 @@ tokenizers==0.20.3
 tomli==2.1.0
     # via coverage
     # via pytest
-torch==2.5.1+cu124
+torch==2.4.0+cu124
     # via accelerate
     # via torchaudio
     # via torchvision
-torchaudio==2.5.1+cu124
-torchvision==0.20.1+cu124
+torchaudio==2.4.0+cu124
+torchvision==0.19.0+cu124
 tornado==6.4.2
     # via jupyter-client
     # via jupyter-server
