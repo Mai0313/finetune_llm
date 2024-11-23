@@ -1,5 +1,4 @@
 from typing import Any
-from pathlib import Path
 
 from datasets import load_dataset
 from src.config import config
@@ -12,15 +11,13 @@ from transformers import (
 )
 
 model_name = "meta-llama/Llama-3.2-1B-Instruct"
-dataset = load_dataset(
-    path="hugfaceguy0001/retarded_bar", name="question", cache_dir=Path("./data")
-)
+dataset = load_dataset(path="hugfaceguy0001/retarded_bar", name="question", cache_dir="./data")
 
 tokenizer = AutoTokenizer.from_pretrained(
-    model_name, cache_dir=Path("./models"), token=config.huggingface_token
+    model_name, cache_dir="./models", token=config.huggingface_token
 )
 model = AutoModelForCausalLM.from_pretrained(
-    model_name, cache_dir=Path("./models"), token=config.huggingface_token
+    model_name, cache_dir="./models", token=config.huggingface_token
 )
 
 
