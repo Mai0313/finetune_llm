@@ -2,21 +2,26 @@
 # use `rye lock` or `rye sync` to update this lockfile
 #
 # last locked with the following flags:
-#   pre: true
+#   pre: false
 #   features: []
 #   all-features: false
 #   with-sources: false
 #   generate-hashes: false
-#   universal: true
+#   universal: false
 
+accelerate==1.1.1
+aiohappyeyeballs==2.4.3
+    # via aiohttp
+aiohttp==3.11.7
+    # via datasets
+    # via fsspec
+aiosignal==1.3.1
+    # via aiohttp
 annotated-types==0.7.0
     # via pydantic
 anyio==4.6.2.post1
     # via httpx
-    # via ipykernel
     # via jupyter-server
-appnope==0.1.4 ; platform_system == 'Darwin'
-    # via ipykernel
 argon2-cffi==23.1.0
     # via jupyter-server
 argon2-cffi-bindings==21.2.0
@@ -27,13 +32,15 @@ asttokens==2.4.1
     # via stack-data
 async-lru==2.0.4
     # via jupyterlab
+async-timeout==5.0.1
+    # via aiohttp
 attrs==24.2.0
+    # via aiohttp
     # via jsonschema
     # via referencing
 babel==2.16.0
     # via jupyterlab-server
-    # via mkdocs-material
-beautifulsoup4==4.13.0b2
+beautifulsoup4==4.12.3
     # via nbconvert
 bleach==6.2.0
     # via nbconvert
@@ -43,25 +50,21 @@ certifi==2022.12.7
     # via requests
 cffi==1.17.1
     # via argon2-cffi-bindings
-    # via pyzmq
 charset-normalizer==2.1.1
     # via requests
-click==8.1.7
-    # via mkdocs
-colorama==0.4.6
-    # via click
-    # via ipython
-    # via mkdocs
-    # via mkdocs-material
 comm==0.2.2
     # via ipykernel
+datasets==2.19.1
 debugpy==1.8.9
     # via ipykernel
 decorator==5.1.1
     # via ipython
-defusedxml==0.8.0rc2
+defusedxml==0.7.1
     # via nbconvert
-exceptiongroup==1.2.2 ; python_full_version < '3.11'
+dill==0.3.8
+    # via datasets
+    # via multiprocess
+exceptiongroup==1.2.2
     # via anyio
     # via ipython
 executing==2.1.0
@@ -69,37 +72,40 @@ executing==2.1.0
 fastjsonschema==2.20.0
     # via nbformat
 filelock==3.13.1
+    # via datasets
+    # via huggingface-hub
     # via torch
+    # via transformers
     # via triton
 fqdn==1.5.1
     # via jsonschema
+frozenlist==1.5.0
+    # via aiohttp
+    # via aiosignal
 fsspec==2024.2.0
+    # via datasets
+    # via huggingface-hub
     # via torch
-ghp-import==2.1.0
-    # via mkdocs
 h11==0.14.0
     # via httpcore
 httpcore==1.0.7
     # via httpx
 httpx==0.27.2
     # via jupyterlab
+huggingface-hub==0.26.2
+    # via accelerate
+    # via datasets
+    # via tokenizers
+    # via transformers
 idna==3.4
     # via anyio
     # via httpx
     # via jsonschema
     # via requests
-importlib-metadata==8.5.0 ; python_full_version < '3.10'
-    # via jupyter-client
-    # via jupyter-lsp
+    # via yarl
+ipykernel==6.29.5
     # via jupyterlab
-    # via jupyterlab-server
-    # via markdown
-    # via mkdocs
-    # via mkdocs-get-deps
-    # via nbconvert
-ipykernel==7.0.0a0
-    # via jupyterlab
-ipython==8.18.1
+ipython==8.29.0
     # via ipykernel
 isoduration==20.11.0
     # via jsonschema
@@ -109,8 +115,6 @@ jinja2==3.1.3
     # via jupyter-server
     # via jupyterlab
     # via jupyterlab-server
-    # via mkdocs
-    # via mkdocs-material
     # via nbconvert
     # via torch
 json5==0.9.28
@@ -147,38 +151,28 @@ jupyter-server==2.14.2
     # via notebook-shim
 jupyter-server-terminals==0.5.3
     # via jupyter-server
-jupyterlab==4.2.0b3
+jupyterlab==4.1.6
     # via notebook
 jupyterlab-pygments==0.3.0
     # via nbconvert
 jupyterlab-server==2.24.0
     # via jupyterlab
     # via notebook
-markdown==3.7
-    # via mkdocs
-    # via mkdocs-material
-    # via pymdown-extensions
-markupsafe==3.0.2
+markupsafe==2.1.5
     # via jinja2
-    # via mkdocs
     # via nbconvert
 matplotlib-inline==0.1.7
     # via ipykernel
     # via ipython
-mergedeep==1.3.4
-    # via mkdocs
-    # via mkdocs-get-deps
 mistune==3.0.2
     # via nbconvert
-mkdocs==1.6.1
-    # via mkdocs-material
-mkdocs-get-deps==0.2.0
-    # via mkdocs
-mkdocs-material==9.5.44
-mkdocs-material-extensions==1.3.1
-    # via mkdocs-material
 mpmath==1.3.0
     # via sympy
+multidict==6.1.0
+    # via aiohttp
+    # via yarl
+multiprocess==0.70.16
+    # via datasets
 nbclient==0.10.0
     # via nbconvert
 nbconvert==7.16.4
@@ -191,111 +185,110 @@ nest-asyncio==1.6.0
     # via ipykernel
 networkx==3.2.1
     # via torch
-notebook==7.2.0b1
+notebook==7.1.3
 notebook-shim==0.2.4
     # via jupyterlab
     # via notebook
 numpy==1.26.3
+    # via accelerate
+    # via datasets
+    # via pandas
     # via torchvision
-nvidia-cublas-cu12==12.4.5.8 ; platform_machine == 'x86_64' and platform_system == 'Linux'
+    # via transformers
+nvidia-cublas-cu12==12.4.5.8
     # via nvidia-cudnn-cu12
     # via nvidia-cusolver-cu12
     # via torch
-nvidia-cuda-cupti-cu12==12.4.127 ; platform_machine == 'x86_64' and platform_system == 'Linux'
+nvidia-cuda-cupti-cu12==12.4.127
     # via torch
-nvidia-cuda-nvrtc-cu12==12.4.127 ; platform_machine == 'x86_64' and platform_system == 'Linux'
+nvidia-cuda-nvrtc-cu12==12.4.127
     # via torch
-nvidia-cuda-runtime-cu12==12.4.127 ; platform_machine == 'x86_64' and platform_system == 'Linux'
+nvidia-cuda-runtime-cu12==12.4.127
     # via torch
-nvidia-cudnn-cu12==9.1.0.70 ; platform_machine == 'x86_64' and platform_system == 'Linux'
+nvidia-cudnn-cu12==9.1.0.70
     # via torch
-nvidia-cufft-cu12==11.2.1.3 ; platform_machine == 'x86_64' and platform_system == 'Linux'
+nvidia-cufft-cu12==11.2.1.3
     # via torch
-nvidia-curand-cu12==10.3.5.147 ; platform_machine == 'x86_64' and platform_system == 'Linux'
+nvidia-curand-cu12==10.3.5.147
     # via torch
-nvidia-cusolver-cu12==11.6.1.9 ; platform_machine == 'x86_64' and platform_system == 'Linux'
+nvidia-cusolver-cu12==11.6.1.9
     # via torch
-nvidia-cusparse-cu12==12.3.1.170 ; platform_machine == 'x86_64' and platform_system == 'Linux'
+nvidia-cusparse-cu12==12.3.1.170
     # via nvidia-cusolver-cu12
     # via torch
-nvidia-nccl-cu12==2.21.5 ; platform_machine == 'x86_64' and platform_system == 'Linux'
+nvidia-nccl-cu12==2.21.5
     # via torch
-nvidia-nvjitlink-cu12==12.4.127 ; platform_machine == 'x86_64' and platform_system == 'Linux'
-    # via nvidia-cufft-cu12
+nvidia-nvjitlink-cu12==12.4.127
     # via nvidia-cusolver-cu12
     # via nvidia-cusparse-cu12
     # via torch
-nvidia-nvtx-cu12==12.4.127 ; platform_machine == 'x86_64' and platform_system == 'Linux'
+nvidia-nvtx-cu12==12.4.127
     # via torch
 overrides==7.7.0
     # via jupyter-server
 packaging==24.1
+    # via accelerate
+    # via datasets
+    # via huggingface-hub
     # via ipykernel
     # via jupyter-server
     # via jupyterlab
     # via jupyterlab-server
-    # via mkdocs
     # via nbconvert
-paginate==0.5.7
-    # via mkdocs-material
+    # via transformers
+pandas==2.2.3
+    # via datasets
 pandocfilters==1.5.1
     # via nbconvert
 parso==0.8.4
     # via jedi
-pathspec==0.12.1
-    # via mkdocs
-pexpect==4.9.0 ; sys_platform != 'win32'
+pexpect==4.9.0
     # via ipython
 pillow==10.2.0
     # via torchvision
 platformdirs==4.3.6
     # via jupyter-core
-    # via mkdocs-get-deps
 prometheus-client==0.21.0
     # via jupyter-server
 prompt-toolkit==3.0.48
     # via ipython
+propcache==0.2.0
+    # via aiohttp
+    # via yarl
 psutil==6.1.0
+    # via accelerate
     # via ipykernel
-ptyprocess==0.7.0 ; os_name != 'nt' or sys_platform != 'win32'
+ptyprocess==0.7.0
     # via pexpect
     # via terminado
 pure-eval==0.2.3
     # via stack-data
+pyarrow==18.0.0
+    # via datasets
+pyarrow-hotfix==0.6
+    # via datasets
 pycparser==2.22
     # via cffi
-pydantic==2.7.4 ; python_full_version >= '3.13'
-pydantic==2.9.2 ; python_full_version < '3.13'
-pydantic-core==2.18.4 ; python_full_version >= '3.13'
-    # via pydantic
-pydantic-core==2.23.4 ; python_full_version < '3.13'
+pydantic==2.9.2
+pydantic-core==2.23.4
     # via pydantic
 pygments==2.18.0
     # via ipython
-    # via mkdocs-material
     # via nbconvert
-pymdown-extensions==10.12
-    # via mkdocs-material
 python-dateutil==2.9.0.post0
     # via arrow
-    # via ghp-import
     # via jupyter-client
+    # via pandas
 python-json-logger==2.0.7
     # via jupyter-events
-pywin32==308 ; platform_python_implementation != 'PyPy' and sys_platform == 'win32'
-    # via jupyter-core
-pywinpty==2.0.14 ; os_name == 'nt'
-    # via jupyter-server
-    # via jupyter-server-terminals
-    # via terminado
+pytz==2024.2
+    # via pandas
 pyyaml==6.0.2
+    # via accelerate
+    # via datasets
+    # via huggingface-hub
     # via jupyter-events
-    # via mkdocs
-    # via mkdocs-get-deps
-    # via pymdown-extensions
-    # via pyyaml-env-tag
-pyyaml-env-tag==0.1
-    # via mkdocs
+    # via transformers
 pyzmq==26.2.0
     # via ipykernel
     # via jupyter-client
@@ -305,10 +298,12 @@ referencing==0.35.1
     # via jsonschema-specifications
     # via jupyter-events
 regex==2024.11.6
-    # via mkdocs-material
+    # via transformers
 requests==2.28.1
+    # via datasets
+    # via huggingface-hub
     # via jupyterlab-server
-    # via mkdocs-material
+    # via transformers
 rfc3339-validator==0.1.4
     # via jsonschema
     # via jupyter-events
@@ -318,10 +313,11 @@ rfc3986-validator==0.1.1
 rpds-py==0.21.0
     # via jsonschema
     # via referencing
+safetensors==0.4.5
+    # via accelerate
+    # via transformers
 send2trash==1.8.3
     # via jupyter-server
-setuptools==70.0.0 ; python_full_version >= '3.12'
-    # via torch
 six==1.16.0
     # via asttokens
     # via python-dateutil
@@ -340,19 +336,27 @@ terminado==0.18.1
     # via jupyter-server-terminals
 tinycss2==1.4.0
     # via nbconvert
-tomli==2.1.0 ; python_full_version < '3.11'
+tokenizers==0.20.3
+    # via transformers
+tomli==2.1.0
     # via jupyterlab
 torch==2.5.1+cu124
+    # via accelerate
     # via torchaudio
     # via torchvision
 torchaudio==2.5.1+cu124
 torchvision==0.20.1+cu124
 tornado==6.4.2
+    # via ipykernel
     # via jupyter-client
     # via jupyter-server
     # via jupyterlab
     # via notebook
     # via terminado
+tqdm==4.66.5
+    # via datasets
+    # via huggingface-hub
+    # via transformers
 traitlets==5.14.3
     # via comm
     # via ipykernel
@@ -366,24 +370,26 @@ traitlets==5.14.3
     # via nbclient
     # via nbconvert
     # via nbformat
-triton==3.1.0 ; python_full_version < '3.13' and platform_machine == 'x86_64' and platform_system == 'Linux'
+transformers==4.46.3
+triton==3.1.0
     # via torch
 types-python-dateutil==2.9.0.20241003
     # via arrow
 typing-extensions==4.9.0
     # via anyio
     # via async-lru
-    # via beautifulsoup4
+    # via huggingface-hub
     # via ipython
+    # via multidict
     # via pydantic
     # via pydantic-core
     # via torch
+tzdata==2024.2
+    # via pandas
 uri-template==1.3.0
     # via jsonschema
 urllib3==1.26.13
     # via requests
-watchdog==6.0.0
-    # via mkdocs
 wcwidth==0.2.13
     # via prompt-toolkit
 webcolors==24.11.1
@@ -393,5 +399,7 @@ webencodings==0.5.1
     # via tinycss2
 websocket-client==1.8.0
     # via jupyter-server
-zipp==3.21.0 ; python_full_version < '3.10'
-    # via importlib-metadata
+xxhash==3.5.0
+    # via datasets
+yarl==1.18.0
+    # via aiohttp
