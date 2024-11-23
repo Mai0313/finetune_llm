@@ -2,6 +2,7 @@ from typing import Any
 
 from datasets import load_dataset
 from src.config import config
+from rich.console import Console
 from transformers import (
     Trainer,
     AutoTokenizer,
@@ -9,6 +10,8 @@ from transformers import (
     AutoModelForCausalLM,
     DataCollatorForLanguageModeling,
 )
+
+console = Console()
 
 model_name = "meta-llama/Llama-3.2-1B-Instruct"
 
@@ -28,7 +31,7 @@ model = AutoModelForCausalLM.from_pretrained(
     model_name, cache_dir="./models", token=config.huggingface_token
 )
 
-# **调整模型的嵌入层大小**
+# 调整模型的嵌入层大小
 model.resize_token_embeddings(len(tokenizer))
 
 
@@ -82,3 +85,14 @@ trainer = Trainer(
 
 # 开始训练
 trainer.train()
+
+trainer.save_model("./models/finetuned_model")
+tokenizer.save_pretrained("./models/finetuned_model")
+
+# 评估模型
+eval_results = trainer.evaluate()
+
+# 使用模型生成文本
+inputs = tokenizer("提供一段文字說明：如何準備咖啡", return_tensors="pt").input_ids
+outputs = model.generate(inputs, max_new_tokens=50)
+console.print(tokenizer.decode(outputs[0], skip_special_tokens=True))
