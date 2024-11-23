@@ -7,7 +7,7 @@ from transformers import (
     Seq2SeqTrainingArguments,
 )
 
-dataset = load_dataset("json", data_files="your_dataset.json")
+dataset = load_dataset("hugfaceguy0001/retarded_bar", "question")
 
 # 載入 Tokenizer 和模型
 model_id = "path/to/llama-3.2-1b"
