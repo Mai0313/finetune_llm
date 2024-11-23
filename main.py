@@ -16,6 +16,7 @@ dataset = load_dataset(path="hugfaceguy0001/retarded_bar", name="question", cach
 tokenizer = AutoTokenizer.from_pretrained(
     model_name, cache_dir="./models", token=config.huggingface_token
 )
+tokenizer.add_special_tokens({"pad_token": "[PAD]"})
 model = AutoModelForCausalLM.from_pretrained(
     model_name, cache_dir="./models", token=config.huggingface_token
 )
