@@ -36,12 +36,8 @@ click==8.1.7
     # via mkdocs
     # via mkdocstrings
 colorama==0.4.6
-    # via click
     # via griffe
-    # via mkdocs
     # via mkdocs-material
-    # via pytest
-    # via tqdm
 coverage==7.6.7
     # via pytest-cov
 datasets==2.19.1
@@ -61,6 +57,7 @@ filelock==3.13.1
     # via huggingface-hub
     # via torch
     # via transformers
+    # via triton
     # via virtualenv
 fire==0.7.0
 flake8==7.1.1
@@ -161,6 +158,35 @@ numpy==1.26.3
     # via torchmetrics
     # via torchvision
     # via transformers
+nvidia-cublas-cu12==12.4.2.65
+    # via nvidia-cudnn-cu12
+    # via nvidia-cusolver-cu12
+    # via torch
+nvidia-cuda-cupti-cu12==12.4.99
+    # via torch
+nvidia-cuda-nvrtc-cu12==12.4.99
+    # via torch
+nvidia-cuda-runtime-cu12==12.4.99
+    # via torch
+nvidia-cudnn-cu12==9.1.0.70
+    # via torch
+nvidia-cufft-cu12==11.2.0.44
+    # via torch
+nvidia-curand-cu12==10.3.5.119
+    # via torch
+nvidia-cusolver-cu12==11.6.0.99
+    # via torch
+nvidia-cusparse-cu12==12.3.0.142
+    # via nvidia-cusolver-cu12
+    # via torch
+nvidia-nccl-cu12==2.20.5
+    # via torch
+nvidia-nvjitlink-cu12==12.4.99
+    # via nvidia-cusolver-cu12
+    # via nvidia-cusparse-cu12
+    # via torch
+nvidia-nvtx-cu12==12.4.99
+    # via torch
 packaging==24.1
     # via accelerate
     # via datasets
@@ -290,6 +316,8 @@ tqdm==4.66.5
     # via pytorch-lightning
     # via transformers
 transformers==4.46.3
+triton==3.0.0
+    # via torch
 typing-extensions==4.9.0
     # via griffe-typingdoc
     # via huggingface-hub
