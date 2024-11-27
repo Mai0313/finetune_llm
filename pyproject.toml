@@ -66,15 +66,15 @@ authors = [
 ]
 dependencies = [
     "pydantic<=2.9.2",
-    "torch==2.4.0+cu124",
-    "torchvision==0.19.0+cu124",
-    "torchaudio==2.4.0+cu124",
-    "transformers>=4.46.3",
-    "datasets<=3.1.0",
+    "torch==2.4.0+cu118",
+    "torchvision==0.19.0+cu118",
+    "torchaudio==2.4.0+cu118",
+    "transformers",
+    "datasets",
     "accelerate>=1.1.1",
-    "huggingface-hub>=0.26.2",
+    "huggingface-hub",
     "pydantic-settings>=2.6.1",
-    "litgpt[all]<=0.4.0",
+    "litgpt[all]>=0.5.3",
 ]
 readme = "README.md"
 requires-python = ">= 3.10, < 3.11"
@@ -103,16 +103,25 @@ docs = { chain = ["docs:src", "docs:scripts", "docs:run"] }
 name = "default"
 url = "https://pypi.org/simple"
 # url = "http://10.9.16.152/simple"
-# type = "index"
 
 [[tool.rye.sources]]
 name = "pytorch"
-url = "https://download.pytorch.org/whl"
-type = "index"
+url = "https://download.pytorch.org/whl/cu118"
 
-# [[tool.rye.proxy]]
-# http = "http://mtkdrone01.mediatek.inc:23984"
-# https = "http://mtkdrone01.mediatek.inc:23984"
+[[tool.rye.proxy]]
+http = "http://mtkdrone01.mediatek.inc:23984"
+https = "http://mtkdrone01.mediatek.inc:23984"
+
+[[tool.uv.index]]
+name = "default"
+url = "https://pypi.org/simple"
+# url = "http://10.9.16.152/simple"
+default = true
+
+[[tool.uv.index]]
+name = "pytorch"
+url = "https://download.pytorch.org/whl/cu118"
+default = false
 
 [build-system]
 requires = ["hatchling", "hatch-fancy-pypi-readme"]
